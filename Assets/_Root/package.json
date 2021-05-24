@@ -8,7 +8,5 @@
     "name": "Google LLC"
   },
   "dependencies": {
-    "com.google.play.common": "https://github.com/Gamee-Studio/google-play-common.git?path=Assets/_Root#v1.3.0",
-    "com.google.play.core": "https://github.com/Gamee-Studio/google-play-core.git?path=Assets/_Root#v1.3.0"
   }
 }
