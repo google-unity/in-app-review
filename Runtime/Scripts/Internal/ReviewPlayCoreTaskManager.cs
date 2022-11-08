@@ -20,14 +20,14 @@ using UnityEngine;
 namespace Google.Play.Review.Internal
 {
     /// <summary>
-    /// Provides two <see cref=" PlayServicesTask{TAndroidJava}"/> methods in order to request the launch of
+    /// Provides two <see cref="PlayCoreTask{TAndroidJava}"/> methods in order to request the launch of
     /// the in-app review dialog.
     /// </summary>
-    internal class ReviewPlayServicesTaskManager : IDisposable
+    internal class ReviewPlayCoreTaskManager : IDisposable
     {
         private readonly AndroidJavaObject _javaReviewManager;
 
-        internal ReviewPlayServicesTaskManager()
+        internal ReviewPlayCoreTaskManager()
         {
             const string factoryClassName =
                 PlayCoreConstants.PlayCorePackagePrefix + "review.ReviewManagerFactory";
@@ -42,26 +42,26 @@ namespace Google.Play.Review.Internal
         }
 
         /// <summary>
-        /// Returns a <see cref=" PlayServicesTask{TAndroidJava}"/> which returns a ReviewInfo
+        /// Returns a <see cref="PlayCoreTask{TAndroidJava}"/> which returns a ReviewInfo
         /// AndroidJavaObject on the registered on success callback.
         /// </summary>
-        public PlayServicesTask<AndroidJavaObject> RequestReviewFlow()
+        public PlayCoreTask<AndroidJavaObject> RequestReviewFlow()
         {
             var javaTask = _javaReviewManager.Call<AndroidJavaObject>("requestReviewFlow");
-            return new  PlayServicesTask<AndroidJavaObject>(javaTask);
+            return new PlayCoreTask<AndroidJavaObject>(javaTask);
         }
 
         /// <summary>
-        /// Returns a <see cref=" PlayServicesTask{TAndroidJava}"/> when the user completes the review or
+        /// Returns a <see cref="PlayCoreTask{TAndroidJava}"/> when the user completes the review or
         /// the dialog is dismissed.
         /// </summary>
         /// <param name="reviewInfo">The on success result of <see cref="RequestReviewFlow"/>.</param>
-        public  PlayServicesTask<AndroidJavaObject> LaunchReviewFlow(AndroidJavaObject reviewInfo)
+        public PlayCoreTask<AndroidJavaObject> LaunchReviewFlow(AndroidJavaObject reviewInfo)
         {
             var javaTask =
                 _javaReviewManager.Call<AndroidJavaObject>("launchReviewFlow",
                     UnityPlayerHelper.GetCurrentActivity(), reviewInfo);
-            return new  PlayServicesTask<AndroidJavaObject>(javaTask);
+            return new PlayCoreTask<AndroidJavaObject>(javaTask);
         }
 
         public void Dispose()
