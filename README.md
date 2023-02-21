@@ -24,7 +24,7 @@ for version `1.8.1`
 using System.Collections;
 using UnityEngine;
 #if UNITY_IOS
-    using UnityEngine.iOS;
+using UnityEngine.iOS;
 #elif UNITY_ANDROID
 using Google.Play.Review;
 #endif
