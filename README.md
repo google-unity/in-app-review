@@ -107,5 +107,5 @@ The cause may be that the native plugin of in-app-review is missing when buildin
 
 ```text
 -keep class com.google.android.play.core.** { *; }
--keep com.google.android.gms.play-** { *; }
+-keep class com.google.android.gms.play-** { *; }
 ```
