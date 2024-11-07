@@ -108,4 +108,7 @@ The cause may be that the native plugin of in-app-review is missing when buildin
 ```text
 -keep class com.google.android.play.core.** { *; }
 -keep class com.google.android.gms.play-** { *; }
+-keep class com.google.android.gms.tasks.** { *; }
 ```
+
+- Please use personal google account to test in-app-review display (do not use g-suite or workspace account)
